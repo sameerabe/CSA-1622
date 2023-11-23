@@ -1,0 +1,14 @@
+data <- c(11,13,13,15,15,16,19,20,20,20,21,21,22,23,24,30,40,45,45,45,71,72,73,75)
+
+# Number of bins
+num_bins <- 5
+
+# Smoothing by bin mean
+smoothed_data_mean <- tapply(data, (seq_along(data)-1) %/% ((length(data)-1)/num_bins), mean)
+print(smoothed_data_mean)
+# Smoothing by bin median
+smoothed_data_median <- tapply(data, (seq_along(data)-1) %/% ((length(data)-1)/num_bins), median)
+print(smoothed_data_median)
+# Smoothing by bin boundaries
+smoothed_data_boundaries <- tapply(data, (seq_along(data)-1) %/% ((length(data)-1)/num_bins), function(x) c(min(x), max(x)))
+print(smoothed_data_boundaries)
